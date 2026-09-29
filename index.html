@@ -7,109 +7,253 @@
     <title>श्री सीताराम जी महाराज अलीपुर</title>
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
+            background: #11110d;
+            color: #ffffff;
             font-family: Arial, sans-serif;
-            background: #f5f1e8;
-            color: #222;
         }
 
-        header {
-            background: #222;
-            color: #d6ad45;
-            text-align: center;
-            padding: 20px 10px;
+        /* HEADER */
+        .header {
+            height: 70px;
+            background: #050505;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            border-bottom: 1px solid #222;
         }
 
-        header h1 {
-            margin: 0;
+        .header-title {
+            color: #f1e7d0;
             font-size: 25px;
+            font-weight: bold;
         }
 
-        header p {
-            margin: 8px 0 0;
-            color: white;
+        .header-icons {
+            display: flex;
+            gap: 20px;
+            font-size: 23px;
+            color: #ddd4bd;
         }
 
+        /* MAIN */
         .container {
-            max-width: 900px;
+            width: 100%;
+            max-width: 850px;
             margin: auto;
             padding: 15px;
         }
 
-        .date-box {
-            background: white;
-            border-radius: 12px;
-            padding: 15px;
-            text-align: center;
-            margin-bottom: 15px;
-        }
-
-        .date-box button {
-            padding: 8px 15px;
-            margin: 5px;
-            border: none;
-            border-radius: 7px;
-            background: #d6ad45;
-            cursor: pointer;
-        }
-
-        .card {
-            background: white;
-            border-radius: 12px;
-            padding: 18px;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-
-        .card h2 {
-            color: #8b6515;
-            margin-top: 0;
-        }
-
-        .panchang-row {
+        /* DATE */
+        .date-navigation {
             display: flex;
+            align-items: center;
             justify-content: space-between;
-            border-bottom: 1px solid #eee;
-            padding: 10px 0;
-        }
-
-        .buttons {
-            display: flex;
             gap: 10px;
-            flex-wrap: wrap;
+            margin-bottom: 15px;
         }
 
-        .buttons a {
+        .date-button {
+            color: #e7c400;
+            font-size: 35px;
+        }
+
+        .date-box {
             flex: 1;
-            min-width: 180px;
+            text-align: center;
+            background: #63490b;
+            border-radius: 40px;
+            padding: 13px;
+            color: #f2d000;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        /* LOCATION CARD */
+        .location-card {
+            background: #000000;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .moon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 45px;
+        }
+
+        .location-name {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .location-info {
+            color: #c9c0ac;
+            margin-top: 5px;
+            font-size: 17px;
+        }
+
+        /* CARD */
+        .card {
+            background: #050505;
+            border-radius: 18px;
+            overflow: hidden;
+            margin-bottom: 25px;
+        }
+
+        .card-title {
             text-align: center;
             padding: 13px;
-            border-radius: 8px;
+            color: #e5c400;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 11px 18px;
+            border-top: 1px solid #171717;
+        }
+
+        .row:nth-child(even) {
+            background: #0b0b0b;
+        }
+
+        .label {
+            color: #e2c22c;
+        }
+
+        .value {
+            color: #00c52d;
+            font-weight: bold;
+        }
+
+        .time {
+            color: #f0d000;
+            font-weight: bold;
+        }
+
+        /* SUN CARD */
+        .sun-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .sun-item {
+            padding: 12px;
+            text-align: center;
+            border-top: 1px solid #181818;
+        }
+
+        .sun-label {
+            color: #e0c12a;
+        }
+
+        .sun-time {
+            color: #00c52d;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* BUTTONS */
+        .action-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .action-buttons a {
             text-decoration: none;
+            text-align: center;
+            padding: 14px;
+            border-radius: 12px;
+            font-weight: bold;
             color: white;
+        }
+
+        .map-button {
+            background: #80630b;
+        }
+
+        .whatsapp-button {
             background: #168b45;
         }
 
-        .map {
-            background: #333;
-        }
-
+        /* FOOTER */
         footer {
             text-align: center;
-            padding: 20px;
-            background: #222;
-            color: white;
-            margin-top: 20px;
+            color: #aaa;
+            padding: 25px 10px;
+            background: #050505;
         }
 
+        /* MOBILE */
         @media (max-width: 600px) {
-            header h1 {
+
+            .header {
+                padding: 0 12px;
+            }
+
+            .header-title {
                 font-size: 21px;
             }
 
-            .panchang-row {
+            .header-icons {
+                gap: 10px;
+                font-size: 19px;
+            }
+
+            .container {
+                padding: 10px;
+            }
+
+            .date-box {
+                font-size: 18px;
+            }
+
+            .location-card {
+                padding: 15px;
+            }
+
+            .moon {
+                width: 65px;
+                height: 65px;
+                font-size: 35px;
+            }
+
+            .location-name {
+                font-size: 19px;
+            }
+
+            .location-info {
+                font-size: 15px;
+            }
+
+            .row {
                 font-size: 14px;
+                padding: 10px;
+            }
+
+            .action-buttons {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -117,125 +261,253 @@
 
 <body>
 
-<header>
-    <h1>श्री सीताराम जी महाराज अलीपुर</h1>
-    <p>दैनिक पंचांग एवं कैलेंडर</p>
+<!-- HEADER -->
+<header class="header">
+
+    <div>☰</div>
+
+    <div class="header-title">
+        पञ्चाङ्ग
+    </div>
+
+    <div class="header-icons">
+        ⚙️ 🔔 ⋮
+    </div>
+
 </header>
 
-<div class="container">
 
-    <div class="date-box">
-        <button onclick="previousDay()">◀ पिछला दिन</button>
-        <strong id="date">29 सितंबर 2026</strong>
-        <button onclick="nextDay()">अगला दिन ▶</button>
+<main class="container">
+
+    <!-- DATE -->
+    <div class="date-navigation">
+
+        <div class="date-button">‹</div>
+
+        <div class="date-box">
+            29 सितंबर 2026
+        </div>
+
+        <div class="date-button">›</div>
+
     </div>
 
-    <div class="card">
-        <h2>🛕 आज का पंचांग</h2>
 
-        <div class="panchang-row">
-            <span>तिथि</span>
-            <strong>तृतीया — 17:09:26</strong>
+    <!-- LOCATION -->
+    <section class="location-card">
+
+        <div class="moon">
+            🌕
         </div>
 
-        <div class="panchang-row">
-            <span>पक्ष</span>
-            <strong>कृष्ण</strong>
+        <div>
+            <div class="location-name">
+                Dausa, India
+            </div>
+
+            <div class="location-info">
+                तृतीया, कृष्ण पक्ष, आश्विन
+            </div>
         </div>
 
-        <div class="panchang-row">
-            <span>नक्षत्र</span>
-            <strong>अश्विनी — 09:02:26</strong>
+    </section>
+
+
+    <!-- PANCHANG -->
+    <section class="card">
+
+        <div class="card-title">
+            तिथि पंचांग
         </div>
 
-        <div class="panchang-row">
-            <span>योग</span>
-            <strong>हर्षण — 27:19:13</strong>
+        <div class="row">
+            <span class="label">तिथि</span>
+            <span>
+                <b class="value">तृतीया</b>
+                <span class="time">17:09:26</span>
+            </span>
         </div>
 
-        <div class="panchang-row">
-            <span>करण</span>
-            <strong>विष्टि भद्र — 17:09:26</strong>
+        <div class="row">
+            <span class="label">पक्ष</span>
+            <span class="value">कृष्ण</span>
         </div>
 
-        <div class="panchang-row">
-            <span>वार</span>
-            <strong>मंगलवार</strong>
+        <div class="row">
+            <span class="label">नक्षत्र</span>
+            <span>
+                <b class="value">अश्विनी</b>
+                <span class="time">09:02:26</span>
+            </span>
         </div>
+
+        <div class="row">
+            <span class="label">योग</span>
+            <span>
+                <b class="value">हर्षण</b>
+                <span class="time">27:19:13*</span>
+            </span>
+        </div>
+
+        <div class="row">
+            <span class="label">करण</span>
+            <span>
+                <b class="value">विष्टि भद्र</b>
+                <span class="time">17:09:26</span>
+            </span>
+        </div>
+
+        <div class="row">
+            <span class="label">करण</span>
+            <span>
+                <b class="value">बव</b>
+                <span class="time">28:03:04*</span>
+            </span>
+        </div>
+
+        <div class="row">
+            <span class="label">वार</span>
+            <span class="value">मंगलवार</span>
+        </div>
+
+    </section>
+
+
+    <!-- OTHER DETAILS -->
+    <section class="card">
+
+        <div class="row">
+            <span class="label">माह (पूर्णिमांत)</span>
+            <span class="value">आश्विन</span>
+        </div>
+
+        <div class="row">
+            <span class="label">चन्द्र राशि</span>
+            <span class="value">♈ मेष</span>
+        </div>
+
+        <div class="row">
+            <span class="label">सूर्य राशि</span>
+            <span class="value">♍ कन्या</span>
+        </div>
+
+        <div class="row">
+            <span class="label">ऋतु</span>
+            <span class="value">शरद</span>
+        </div>
+
+        <div class="row">
+            <span class="label">अयन</span>
+            <span class="value">दक्षिणायन</span>
+        </div>
+
+        <div class="row">
+            <span class="label">संवत्सर (उत्तर)</span>
+            <span class="value">रौद्र</span>
+        </div>
+
+        <div class="row">
+            <span class="label">विक्रम संवत</span>
+            <span class="value">2083</span>
+        </div>
+
+        <div class="row">
+            <span class="label">शक संवत</span>
+            <span class="value">1948</span>
+        </div>
+
+        <div class="row">
+            <span class="label">कलि संवत</span>
+            <span class="value">5127</span>
+        </div>
+
+    </section>
+
+
+    <!-- SUNRISE / SUNSET -->
+    <section class="card">
+
+        <div class="card-title">
+            Dausa, India
+        </div>
+
+        <div class="sun-grid">
+
+            <div class="sun-item">
+                <div class="sun-label">सूर्योदय</div>
+                <div class="sun-time">06:15:28</div>
+            </div>
+
+            <div class="sun-item">
+                <div class="sun-label">सूर्यास्त</div>
+                <div class="sun-time">18:10:24</div>
+            </div>
+
+            <div class="sun-item">
+                <div class="sun-label">दिन काल</div>
+                <div class="sun-time">11:54:56</div>
+            </div>
+
+            <div class="sun-item">
+                <div class="sun-label">रात्रि काल</div>
+                <div class="sun-time">12:05:31</div>
+            </div>
+
+            <div class="sun-item">
+                <div class="sun-label">चंद्रास्त</div>
+                <div class="sun-time">08:44:10</div>
+            </div>
+
+            <div class="sun-item">
+                <div class="sun-label">चंद्रोदय</div>
+                <div class="sun-time">19:44:01</div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- TEMPLE -->
+    <section class="card">
+
+        <div class="card-title">
+            🛕 श्री सीताराम जी महाराज अलीपुर
+        </div>
+
+        <div class="row">
+            <span class="label">स्थान</span>
+            <span class="value">अलीपुर, दौसा, राजस्थान</span>
+        </div>
+
+    </section>
+
+
+    <!-- FIXED LINKS -->
+    <div class="action-buttons">
+
+        <a class="map-button"
+           href="https://maps.app.goo.gl/MfNqoht85yveY77D6?g_st=ac"
+           target="_blank">
+            📍 मंदिर की Location
+        </a>
+
+        <a class="whatsapp-button"
+           href="https://chat.whatsapp.com/EgDJ6bszGkEEq44lxeCC10"
+           target="_blank">
+            🟢 WhatsApp Group
+        </a>
+
     </div>
 
-    <div class="card">
-        <h2>🌅 दिन के समय</h2>
+</main>
 
-        <div class="panchang-row">
-            <span>सूर्योदय</span>
-            <strong>06:15:28</strong>
-        </div>
-
-        <div class="panchang-row">
-            <span>सूर्यास्त</span>
-            <strong>18:10:24</strong>
-        </div>
-
-        <div class="panchang-row">
-            <span>चंद्रोदय</span>
-            <strong>19:44:01</strong>
-        </div>
-
-        <div class="panchang-row">
-            <span>चंद्रास्त</span>
-            <strong>08:44:10</strong>
-        </div>
-    </div>
-
-    <div class="card">
-        <h2>📍 मंदिर</h2>
-
-        <p>श्री सीताराम जी महाराज अलीपुर, दौसा</p>
-
-        <div class="buttons">
-            <a href="https://maps.app.goo.gl/MfNqoht85yveY77D6?g_st=ac"
-               target="_blank">
-                📍 Google Maps
-            </a>
-
-            <a href="https://chat.whatsapp.com/EgDJ6bszGkEEq44lxeCC10"
-               target="_blank">
-                🟢 WhatsApp Group
-            </a>
-        </div>
-    </div>
-
-</div>
 
 <footer>
-    © 2026 Shri Sitaram Alipur
+    श्री सीताराम जी महाराज अलीपुर
+    <br>
+    Daily Panchang & Calendar
 </footer>
-
-<script>
-    let currentDate = new Date(2026, 8, 29);
-
-    function showDate() {
-        const options = {
-            day: "numeric",
-            month: "long",
-            year: "numeric"
-        };
-
-        document.getElementById("date").textContent =
-            currentDate.toLocaleDateString("hi-IN", options);
-    }
-
-    function previousDay() {
-        currentDate.setDate(currentDate.getDate() - 1);
-        showDate();
-    }
-
-    function nextDay() {
-        currentDate.setDate(currentDate.getDate() + 1);
-        showDate();
-    }
-</script>
 
 </body>
 </html>
