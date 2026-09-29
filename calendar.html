@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>पंचांग कैलेंडर - श्री सीताराम जी महाराज अलीपुर</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #11110d;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            background: #050505;
+            padding: 18px 12px;
+            text-align: center;
+            color: #f0cf00;
+            font-size: 23px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 15px;
+        }
+
+        .month-navigation {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .month-button {
+            border: none;
+            background: #80600b;
+            color: #f5d000;
+            font-size: 25px;
+            border-radius: 10px;
+            padding: 8px 15px;
+            cursor: pointer;
+        }
+
+        .month-name {
+            flex: 1;
+            text-align: center;
+            background: #63490b;
+            color: #f5d000;
+            padding: 13px;
+            border-radius: 30px;
+            font-size: 21px;
+            font-weight: bold;
+        }
+
+        .calendar {
+            background: #050505;
+            border-radius: 18px;
+            padding: 10px;
+            overflow: hidden;
+        }
+
+        .weekdays,
+        .days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+        }
+
+        .weekday {
+            text-align: center;
+            color: #e5c400;
+            font-weight: bold;
+            padding: 12px 3px;
+        }
+
+        .day {
+            min-height: 75px;
+            border: 1px solid #1d1d1d;
+            padding: 8px;
+            text-align: center;
+            cursor: pointer;
+            background: #080808;
+        }
+
+        .day:hover {
+            background: #25200d;
+        }
+
+        .day-number {
+            font-size: 18px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .tithi {
+            margin-top: 8px;
+            color: #00c52d;
+            font-size: 12px;
+        }
+
+        .today {
+            border: 2px solid #f0d000;
+            background: #241d08;
+        }
+
+        .empty {
+            background: #030303;
+            cursor: default;
+        }
+
+        .back-button {
+            display: block;
+            margin: 20px auto 5px;
+            width: fit-content;
+            padding: 12px 25px;
+            background: #168b45;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px 10px;
+            margin-top: 20px;
+            background: #050505;
+            color: #aaa;
+        }
+
+        @media (max-width: 600px) {
+
+            .container {
+                padding: 8px;
+            }
+
+            .month-name {
+                font-size: 17px;
+            }
+
+            .month-button {
+                font-size: 20px;
+                padding: 7px 11px;
+            }
+
+            .day {
+                min-height: 65px;
+                padding: 5px 2px;
+            }
+
+            .day-number {
+                font-size: 16px;
+            }
+
+            .tithi {
+                font-size: 10px;
+            }
+
+            .weekday {
+                font-size: 12px;
+                padding: 10px 2px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="header">
+    📅 पंचांग कैलेंडर
+</div>
+
+<div class="container">
+
+    <div class="month-navigation">
+
+        <button class="month-button" onclick="previousMonth()">
+            ‹
+        </button>
+
+        <div class="month-name" id="monthName"></div>
+
+        <button class="month-button" onclick="nextMonth()">
+            ›
+        </button>
+
+    </div>
+
+    <div class="calendar">
+
+        <div class="weekdays">
+            <div class="weekday">रवि</div>
+            <div class="weekday">सोम</div>
+            <div class="weekday">मंगल</div>
+            <div class="weekday">बुध</div>
+            <div class="weekday">गुरु</div>
+            <div class="weekday">शुक्र</div>
+            <div class="weekday">शनि</div>
+        </div>
+
+        <div class="days" id="days"></div>
+
+    </div>
+
+    <a href="index.html" class="back-button">
+        🏠 आज का पंचांग
+    </a>
+
+</div>
+
+<footer>
+    श्री सीताराम जी महाराज अलीपुर
+    <br>
+    Daily Panchang & Calendar
+</footer>
+
+
+<script>
+
+let currentMonth = 8;
+let currentYear = 2026;
+
+const monthNames = [
+    "जनवरी",
+    "फरवरी",
+    "मार्च",
+    "अप्रैल",
+    "मई",
+    "जून",
+    "जुलाई",
+    "अगस्त",
+    "सितंबर",
+    "अक्टूबर",
+    "नवंबर",
+    "दिसंबर"
+];
+
+function createCalendar() {
+
+    const monthName = document.getElementById("monthName");
+    const daysContainer = document.getElementById("days");
+
+    monthName.textContent =
+        monthNames[currentMonth] + " " + currentYear;
+
+    daysContainer.innerHTML = "";
+
+    const firstDay =
+        new Date(currentYear, currentMonth, 1).getDay();
+
+    const totalDays =
+        new Date(currentYear, currentMonth + 1, 0).getDate();
+
+    for (let i = 0; i < firstDay; i++) {
+
+        const empty = document.createElement("div");
+
+        empty.className = "day empty";
+
+        daysContainer.appendChild(empty);
+    }
+
+    for (let day = 1; day <= totalDays; day++) {
+
+        const box = document.createElement("div");
+
+        box.className = "day";
+
+        if (
+            day === 29 &&
+            currentMonth === 8 &&
+            currentYear === 2026
+        ) {
+            box.classList.add("today");
+        }
+
+        box.innerHTML = `
+            <div class="day-number">${day}</div>
+            <div class="tithi">पंचांग</div>
+        `;
+
+        box.onclick = function () {
+
+            window.location.href =
+                "index.html?date=" +
+                currentYear +
+                "-" +
+                String(currentMonth + 1).padStart(2, "0") +
+                "-" +
+                String(day).padStart(2, "0");
+
+        };
+
+        daysContainer.appendChild(box);
+    }
+}
+
+function previousMonth() {
+
+    currentMonth--;
+
+    if (currentMonth < 0) {
+        currentMonth = 11;
+        currentYear--;
+    }
+
+    createCalendar();
+}
+
+function nextMonth() {
+
+    currentMonth++;
+
+    if (currentMonth > 11) {
+        currentMonth = 0;
+        currentYear++;
+    }
+
+    createCalendar();
+}
+
+createCalendar();
+
+</script>
+
+</body>
+</html>
