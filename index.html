@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>श्री सीताराम जी महाराज अलीपुर</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f1e8;
+            color: #222;
+        }
+
+        header {
+            background: #222;
+            color: #d6ad45;
+            text-align: center;
+            padding: 20px 10px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 25px;
+        }
+
+        header p {
+            margin: 8px 0 0;
+            color: white;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 15px;
+        }
+
+        .date-box {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .date-box button {
+            padding: 8px 15px;
+            margin: 5px;
+            border: none;
+            border-radius: 7px;
+            background: #d6ad45;
+            cursor: pointer;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .card h2 {
+            color: #8b6515;
+            margin-top: 0;
+        }
+
+        .panchang-row {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #eee;
+            padding: 10px 0;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .buttons a {
+            flex: 1;
+            min-width: 180px;
+            text-align: center;
+            padding: 13px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: white;
+            background: #168b45;
+        }
+
+        .map {
+            background: #333;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #222;
+            color: white;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 21px;
+            }
+
+            .panchang-row {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>श्री सीताराम जी महाराज अलीपुर</h1>
+    <p>दैनिक पंचांग एवं कैलेंडर</p>
+</header>
+
+<div class="container">
+
+    <div class="date-box">
+        <button onclick="previousDay()">◀ पिछला दिन</button>
+        <strong id="date">29 सितंबर 2026</strong>
+        <button onclick="nextDay()">अगला दिन ▶</button>
+    </div>
+
+    <div class="card">
+        <h2>🛕 आज का पंचांग</h2>
+
+        <div class="panchang-row">
+            <span>तिथि</span>
+            <strong>तृतीया — 17:09:26</strong>
+        </div>
+
+        <div class="panchang-row">
+            <span>पक्ष</span>
+            <strong>कृष्ण</strong>
+        </div>
+
+        <div class="panchang-row">
+            <span>नक्षत्र</span>
+            <strong>अश्विनी — 09:02:26</strong>
+        </div>
+
+        <div class="panchang-row">
+            <span>योग</span>
+            <strong>हर्षण — 27:19:13</strong>
+        </div>
+
+        <div class="panchang-row">
+            <span>करण</span>
+            <strong>विष्टि भद्र — 17:09:26</strong>
+        </div>
+
+        <div class="panchang-row">
+            <span>वार</span>
+            <strong>मंगलवार</strong>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>🌅 दिन के समय</h2>
+
+        <div class="panchang-row">
+            <span>सूर्योदय</span>
+            <strong>06:15:28</strong>
+        </div>
+
+        <div class="panchang-row">
+            <span>सूर्यास्त</span>
+            <strong>18:10:24</strong>
+        </div>
+
+        <div class="panchang-row">
+            <span>चंद्रोदय</span>
+            <strong>19:44:01</strong>
+        </div>
+
+        <div class="panchang-row">
+            <span>चंद्रास्त</span>
+            <strong>08:44:10</strong>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>📍 मंदिर</h2>
+
+        <p>श्री सीताराम जी महाराज अलीपुर, दौसा</p>
+
+        <div class="buttons">
+            <a href="https://maps.app.goo.gl/MfNqoht85yveY77D6?g_st=ac"
+               target="_blank">
+                📍 Google Maps
+            </a>
+
+            <a href="https://chat.whatsapp.com/EgDJ6bszGkEEq44lxeCC10"
+               target="_blank">
+                🟢 WhatsApp Group
+            </a>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    © 2026 Shri Sitaram Alipur
+</footer>
+
+<script>
+    let currentDate = new Date(2026, 8, 29);
+
+    function showDate() {
+        const options = {
+            day: "numeric",
+            month: "long",
+            year: "numeric"
+        };
+
+        document.getElementById("date").textContent =
+            currentDate.toLocaleDateString("hi-IN", options);
+    }
+
+    function previousDay() {
+        currentDate.setDate(currentDate.getDate() - 1);
+        showDate();
+    }
+
+    function nextDay() {
+        currentDate.setDate(currentDate.getDate() + 1);
+        showDate();
+    }
+</script>
+
+</body>
+</html>
